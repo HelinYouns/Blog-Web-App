@@ -1,0 +1,126 @@
+<%- include('partials/header.ejs') %>
+    <!-- <h1></h1> -->
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+                <% posts.forEach(function(post) { %>
+                    <div class="col mb-3">
+                        <div class="card shadow-sm">
+                            <svg width="100%" height="225" class="bd-placeholder-img card-img-top">
+                                <image href="<%= post.image %>" width="100%" height="100%"
+                                    preserveAspectRatio="xMidYMid slice" />
+                            </svg>
+                            <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                                <% const words=post.description.trim().split(/\s+/); %>
+
+                                    <p class="card-text clickable-description" style="cursor: pointer;"
+                                        data-full="<%= post.description.replace(/" /g, '&quot;' ) %>"
+                                        data-image="<%= post.image %>"
+                                            data-date="<%= post.postedAt %>"
+                                                onclick="showFullText(this)" >
+                                                <%= words.slice(0,4).join(" ") %><%= words.length>10?" ...":"" %>
+                                    </p>
+                                    <div class="d-flex  justify-content-between align-items-center">
+
+                                        <div class="dropdown">
+                                            <button class="btn " type="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <img class="drop-down-btn" src="/images/icons/more.png"
+                                                    alt="Drop down menu">
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        href="/addpost?id=<%= post.id %>&description=<%= encodeURIComponent(post.description) %>&image=<%= encodeURIComponent(post.image) %>">Edit</a>
+
+                                                </li>
+                                                <li>
+                                                    <form action="/deletepost" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="description"
+                                                            value="<%= post.description %>">
+                                                        <input type="hidden" name="image" value="<%= post.image %>">
+                                                        <button class="dropdown-item" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                        <small class="text-body-secondary">
+                                            <%=post.postedAt%>
+                                        </small>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+            </div>
+
+            <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content ">
+
+                        <div class="modal-header d-flex align-items-center justify-content-between">
+                            <h5 class="modal-title descriptionModalLabel " id="modal-post-date"></h5>
+                            <div class="row d-flex align-items-center justify-content-center mr-2">
+                                <div class="dropdown dropstart top-0 end-0 m-3">
+
+                                    <button class="btn " type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <img class="drop-down-btn" src="/images/icons/more.png" alt="Drop down menu">
+                                    </button>
+                                    <ul class="dropdown-menu ">
+                                        <li>
+                                            <a class="dropdown-item" id="modal-edit-link" href="#">Edit</a>
+                                        </li>
+                                        <li>
+                                            <form id="modal-delete-form" action="/deletepost" method="POST"
+                                                style="display: inline;">
+                                                <input type="hidden" name="description" id="modal-description-input">
+                                                <input type="hidden" name="image" id="modal-image-input">
+                                                <button class="dropdown-item" type="submit">Delete</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"><img class="img-cover"
+                                        src="/images/icons/close.png" alt=""></button>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row d-flex align-items-start justify-content-start">
+                                <!-- Image Column -->
+                                <div class="col-md-5 text-center mb-3 mb-md-0">
+                                    <img id="modal-post-image" src="" alt="Post Image"
+                                        class="img-fluid rounded shadow-sm" />
+                                </div>
+
+                                <!-- Text Column -->
+                                <div class="col-md-7 d-flex justify-content-start align-items-start">
+                                    <p id="modal-description-text" class="fs-5 text-start" style="text-align: justify;">
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- End of  Continer-->
+    </div>
+
+    <form action="/addpost" method="get">
+        <button id="fixed-button" type="submit"> <img id="add-icon" src="/images/icons/add.png"
+                alt="Add Icon, To Add New Post"></button>
+    </form>
+
+    <%- include('partials/footer.ejs') %>

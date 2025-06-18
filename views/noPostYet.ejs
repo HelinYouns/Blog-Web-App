@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs')%>
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3"> <svg class="bi mt-4 mb-3"
+                style="color: var(--bs-indigo);" width="128" height="128" aria-hidden="true">
+                <image href="/images/icons/empty-box.png" alt="Empty Box">
+            </svg>
+            <h1 class="text-body-emphasis">Looks a little quiet here...</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-muted">
+                Add your first post and make it yours 👇🏻
+            </p>
+            <div class="d-inline-flex gap-2 mb-5">
+                <form action="/addpost" method="get">
+                    <button class="custom-post-btn d-inline-flex align-items-center btn btn-lg px-4 rounded-pill text-white border-0"
+                        type="submit" >
+                        Start Posting
+                        
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container mx-auto">
+
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="text-center ">
+                <img src="/images/icons/empty-box.png" alt="Empty Box">
+                <p >Looks a little quiet here...</p>
+                <p>Add your first post and make it yours 👇🏻</p>
+                <form action="/addpost" method="get">
+                    <button id="post-button" type="submit">Start Posting</button>
+                </form>
+            </div>
+        </div>
+    
+    </div> -->
+
+
+    <%- include('partials/footer.ejs') %>

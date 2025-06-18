@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=LXGW+Marker+Gothic&family=Ponomar&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+
+  /* outline: 1px solid red; */
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  box-shadow: 2px 2px 4px rgba(175, 174, 174, 0.685);
+  background-color: #03A6A1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 23px;
+  color: white;
+  font-family: "Ponomar", system-ui;
+}
+
+.ponomar-regular {
+  font-family: "Ponomar", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#add-icon {
+  flex-wrap: wrap;
+}
+
+#fixed-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 65px;
+  height: 65px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+#fixed-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+#empty-box {
+  width: 128px;
+  height: auto;
+}
+
+.custom-post-btn {
+  background-color: #03A6A1;
+  color: white;
+  box-shadow: 0 4px 12px rgba(3, 166, 161, 0.4);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.custom-post-btn:hover {
+  background-color: #02928D;
+  box-shadow: 0 6px 16px rgba(3, 166, 161, 0.6);
+}
+
+.drop-down-btn{
+  width: 20px;
+  height: auto;
+}
+
+.btn-close{
+  width:25px;
+height: 25px;
+border: none;
+background-color: transparent;
+}
+.img-cover{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 100px;
+    /* if your navbar is taller on small screens */
+  }
+}
